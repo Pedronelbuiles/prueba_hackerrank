@@ -1,11 +1,12 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button'
+
+import './button.css';
 
 const ButtonPedro = ({showData, textButton, endIcon}) => {
   return (
-    <Button variant="outline-dark" onClick={showData}>
+    <button className="button" onClick={showData}>
       {textButton} {endIcon}
-    </Button>
+    </button>
   )
 }
 

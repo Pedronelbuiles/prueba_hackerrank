@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+
+.alert {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.success {
+    background-color: rgb(12, 19, 13);
+    color: rgb(204, 232, 205);
+}
+
+.info {
+    background-color: rgb(7, 19, 24);
+    color: rgb(184, 231, 251);
+}
+
+.warning {
+    background-color: rgb(25, 18, 7);
+    color: rgb(255, 226, 183)
+}
+
+.error {
+    background-color: rgb(22, 11, 11);
+    color: rgb(244, 199, 199);
+}

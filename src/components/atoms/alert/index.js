@@ -1,11 +1,12 @@
 import React from 'react';
-import Alert from 'react-bootstrap/Alert'
+
+import './alert.css';
 
 const AlertPedro = ({type, message}) => {
   return (
-    <Alert variant={type}>
+    <div className={[type, 'alert'].join(' ')}>
       <p>{message}</p>
-    </Alert>
+    </div>
   )
 }
 
