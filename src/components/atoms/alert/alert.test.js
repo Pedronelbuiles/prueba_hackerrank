@@ -17,11 +17,11 @@ describe('Testing alert', () => {
     
     const component = renderer.create(<AlertPedro type={data.type} message={data.message} />);
 
-    const text = component.getInstance();
+    const arbol = component.toTree();
     const alert = component.root.findAllByType('p');
   
     console.log('alert', alert);
-    console.log('text', text);
+    console.log('arbol', arbol);
     // expect(alert.textContent).toBe(data.message);
   })
 
