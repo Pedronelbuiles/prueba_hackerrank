@@ -7,7 +7,10 @@ import ButtonPedro from './index.js';
 let data;
 
 const showDataInConsole = () => {
-  console.log("Clicked button");
+  data = {
+    ...data,
+    clicked: true
+  }
 }
 
 describe('Testing button', () => {
@@ -15,7 +18,8 @@ describe('Testing button', () => {
     data = {
       showData: showDataInConsole,
       textButton: 'click me',
-      endIcon: <AiOutlineSend />
+      endIcon: <AiOutlineSend />,
+      clicked: false
     }  
   });
 
@@ -43,10 +47,12 @@ describe('Testing button', () => {
     expect(button.children[2]).toMatchObject(icon);
   })
 
-  it('button clicked test', () => {
+  it('button onClick function test', () => {
     const component = renderer.create(<ButtonPedro showData={data.showData} textButton={data.textButton} endIcon={data.endIcon} />);
-    
-    const button = component.toJSON();
+
+    component.root.findByType('button').props.onClick();
+
+    expect(data.clicked).toBeTruthy()
   })
 
 })

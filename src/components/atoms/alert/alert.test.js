@@ -47,7 +47,7 @@ describe('Testing button', () => {
     expect(button.children[2]).toMatchObject(icon);
   })
 
-  it('button clicked test', () => {
+  it('button onClick function test', () => {
     const component = renderer.create(<ButtonPedro showData={data.showData} textButton={data.textButton} endIcon={data.endIcon} />);
 
     component.root.findByType('button').props.onClick();
