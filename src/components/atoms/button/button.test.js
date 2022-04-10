@@ -6,7 +6,7 @@ import ButtonPedro from './index.js';
 
 let data;
 
-const showDataInConsole = () => {
+const showDataFunctionTest = () => {
   data = {
     ...data,
     clicked: true
@@ -16,7 +16,7 @@ const showDataInConsole = () => {
 describe('Testing button', () => {
   beforeEach(() => {
     data = {
-      showData: showDataInConsole,
+      showData: showDataFunctionTest,
       textButton: 'click me',
       endIcon: <AiOutlineSend />,
       clicked: false
