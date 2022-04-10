@@ -43,4 +43,10 @@ describe('Testing button', () => {
     expect(button.children[2]).toMatchObject(icon);
   })
 
+  it('button clicked test', () => {
+    const component = renderer.create(<ButtonPedro showData={data.showData} textButton={data.textButton} endIcon={data.endIcon} />);
+    
+    const button = component.toJSON();
+  })
+
 })
