@@ -1,58 +1,73 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { AiOutlineSend } from 'react-icons/ai'
 
-import ButtonPedro from './index.js';
+import AlertPedro from './index.js'
 
 let data;
 
-const showDataInConsole = () => {
-  data = {
-    ...data,
-    clicked: true
-  }
-}
-
-describe('Testing button', () => {
+describe('Testing alert', () => {
   beforeEach(() => {
     data = {
-      showData: showDataInConsole,
-      textButton: 'click me',
-      endIcon: <AiOutlineSend />,
-      clicked: false
+      type: 'success',
+      message: 'mensaje de prueba'
     }  
   });
 
-  it('render the three elements in the component', () => {
-    const component = renderer.create(<ButtonPedro showData={data.showData} textButton={data.textButton} endIcon={data.endIcon} />);
+  it('render only one alert component', () => {
+    const component = renderer.create(<AlertPedro type={data.type} message={data.message} />);
 
-    const button = component.toJSON();
-    expect(button.children.length).toBe(3)
+    const alert = component.toJSON();
+    expect(alert.children.length).toBe(1)
   })
 
-  it('button show the textButton from data', () => {
-    const component = renderer.create(<ButtonPedro showData={data.showData} textButton={data.textButton} endIcon={data.endIcon} />);
+  it('alert show the message data', () => {
+    const component = renderer.create(<AlertPedro type={data.type} message={data.message} />);
 
-    const button = component.toJSON();
-    expect(button.children[0]).toBe(data.textButton);
+    const alert = component.toJSON();
+    expect(alert.children[0].children[0]).toBe(data.message);
   })
 
-  it('button show the endIcon from data', () => {
-    const component = renderer.create(<ButtonPedro showData={data.showData} textButton={data.textButton} endIcon={data.endIcon} />);
-    const iconComponent = renderer.create(data.endIcon);
+  it('alert show success class', () => {
+    const component = renderer.create(<AlertPedro type={data.type} message={data.message} />);
 
-    const button = component.toJSON();
-    const icon = iconComponent.toJSON();
+    const alert = component.toJSON();
+    expect(alert.props.className.includes(data.type)).toEqual(true)
+  })
+
+  it('alert show info class', () => {
+    data = {
+      ...data,
+      type: 'info'
+    }
+    const component = renderer.create(<AlertPedro type={data.type} message={data.message} />);
+
+    const alert = component.toJSON();
+
+    expect(alert.props.className.includes(data.type)).toEqual(true)
+  })
+
+  it('alert show warning class', () => {
+    data = {
+      ...data,
+      type: 'warning'
+    }
+    const component = renderer.create(<AlertPedro type={data.type} message={data.message} />);
+
+    const alert = component.toJSON();
     
-    expect(button.children[2]).toMatchObject(icon);
+    expect(alert.props.className.includes(data.type)).toEqual(true)
   })
 
-  it('button onClick function test', () => {
-    const component = renderer.create(<ButtonPedro showData={data.showData} textButton={data.textButton} endIcon={data.endIcon} />);
+  it('alert show error class', () => {
+    data = {
+      ...data,
+      type: 'error'
+    }
+    const component = renderer.create(<AlertPedro type={data.type} message={data.message} />);
 
-    component.root.findByType('button').props.onClick();
-
-    expect(data.clicked).toBeTruthy()
+    const alert = component.toJSON();
+    
+    expect(alert.props.className.includes(data.type)).toEqual(true)
   })
 
 })
