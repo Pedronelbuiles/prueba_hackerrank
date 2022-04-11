@@ -31,7 +31,7 @@ describe('Testing alert', () => {
     const component = renderer.create(<AlertPedro type={data.type} message={data.message} />);
 
     const alert = component.toJSON();
-    expect(alert.props.className.includes(data.type)).toEqual(true)
+    expect(alert.props.className.includes(data.type)).toEqual(true);
   })
 
   it('alert show info class', () => {
@@ -43,7 +43,7 @@ describe('Testing alert', () => {
 
     const alert = component.toJSON();
 
-    expect(alert.props.className.includes(data.type)).toEqual(true)
+    expect(alert.props.className.includes(data.type)).toEqual(true);
   })
 
   it('alert show warning class', () => {
@@ -55,7 +55,7 @@ describe('Testing alert', () => {
 
     const alert = component.toJSON();
     
-    expect(alert.props.className.includes(data.type)).toEqual(true)
+    expect(alert.props.className.includes(data.type)).toEqual(true);
   })
 
   it('alert show error class', () => {
@@ -67,7 +67,7 @@ describe('Testing alert', () => {
 
     const alert = component.toJSON();
     
-    expect(alert.props.className.includes(data.type)).toEqual(true)
+    expect(alert.props.className.includes(data.type)).toEqual(true);
   })
 
 })
