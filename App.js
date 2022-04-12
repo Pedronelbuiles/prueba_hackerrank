@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import api from './axios';
-import { PageSettings } from './src/context/page-settings';
-import Content from './src/components/organisms/Content';
+
+import { PageSettings } from './context/page-settings';
+import Content from './components/organisms/content';
 
 class App extends Component {
+  constructor(props){
+    super(props)
 
+    this.state = {
+      data: ''
+    }
+  }
+  
   render() {
     return (
       <div className="App">
@@ -17,7 +24,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <PageSettings.Provider>
+        <PageSettings.Provider value={this.state}>
             <Content />
         </PageSettings.Provider>
       </div>

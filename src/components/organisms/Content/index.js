@@ -1,11 +1,12 @@
-import { PageSettings } from "../../../context/page-settings"
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
 import routes from "../../../context/routes"
 
 
-const Content = () => {
-
+class Content extends Component {
+  render(){
     return(
-        <PageSettings.Consumer>
+        <div>
             {routes.map((route, index) => (
                 <Route
                     key={index}
@@ -14,8 +15,9 @@ const Content = () => {
                     component={route.component}
                 />
             ))}
-        </PageSettings.Consumer>
+        </div>
     )
+  }
 }
 
-export default Content
+export default withRouter(Content);

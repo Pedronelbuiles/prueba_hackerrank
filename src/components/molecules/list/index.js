@@ -1,41 +1,42 @@
 import React, { Component } from "react"
 
+import api from "../../../axios/api"
+
 class ListPedro extends Component {
     constructor(props){
         super(props)
         
         this.getData = async () => {
             const {data} = await api.get('/character')
-            console.log(data)
-            return data
+            
+            this.setState({...this.state.data, data, respOk: true})
         }
 
         this.state = {
-            data: {}
+            data: {},
+            respOk: false
         }
     
     }
 
-    componentDidMount(){
-        const newState = this.getData();
-
-        this.setState({...this.state.data, data: newState})
-        console.log(this.state.data);
+    componentWillMount(){
+        this.getData();
     }
 
     render(){
+        const {respOk, data} = this.state;
         return (
-            <>
+            <div>
+                <h2>Respuesta del api</h2>
                 {
-                    this.state.data &&
-                    this.state.data.results.map(character => (
-                        <div>
+                    respOk && data.results && data.results.map(character => (
+                        <div key={character.id}>
                             <p>{character.name}</p>
                             <p>{character.species}</p>
                         </div>
                     ))
                 }
-            </>
+            </div>
         )
     }
 }

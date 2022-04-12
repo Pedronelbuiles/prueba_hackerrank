@@ -1,7 +1,9 @@
+import React from 'react';
+
 import FormPedro from "../components/molecules/form";
 import ListPedro from "../components/molecules/list";
 
-export default routes = [
+const routes = [
     {
         path: '/',
         exact: true,
@@ -9,9 +11,11 @@ export default routes = [
         component: () => <FormPedro />
     },
     {
-        path: '/',
+        path: '/api',
         exact: true,
         title: 'api',
         component: () => <ListPedro />
     }
-]
+];
+
+export default routes
